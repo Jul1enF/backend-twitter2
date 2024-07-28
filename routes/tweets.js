@@ -16,7 +16,10 @@ router.post('/newTweet', (req, res)=>{
 })
 
 router.get('/', (req, res)=>{
-    Tweet.find().then(data=> res.json(data))
+    Tweet.find().then(data=> {
+        data.reverse()
+        res.json(data)
+    })
 })
 
 
@@ -35,8 +38,8 @@ router.delete('/deleteTweet/:tweetId', (req, res)=>{
     .then(data=> res.json(data))
 })
 
-router.post('/getByHashtag', (req, res)=>{
-    Tweet.find({hashtag : req.body.hashtag})
+router.get('/getByHashtag/:hashtag', (req, res)=>{
+    Tweet.find({hashtag : `#${req.params.hashtag}`})
     .then(data=> res.json(data))
 })
 
