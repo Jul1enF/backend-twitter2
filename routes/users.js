@@ -13,7 +13,7 @@ router.post('/signup', (req, res)=>{
   if (!checkBody(req.body, ['username', 'password', 'firstname']))
   {
       res.json({result : false,
-          error : 'Missing or empty fields.'
+          error : 'Error : Missing or empty fields !'
       })
       return
   }
@@ -21,7 +21,7 @@ router.post('/signup', (req, res)=>{
       if (data){
           res.json({
               result : false,
-              error : 'User already exists.'
+              error : 'Error : Username already exists !'
           })
           return
       }
@@ -46,7 +46,7 @@ router.post('/signup', (req, res)=>{
     if (!checkBody(req.body,['username', 'password'])){
         res.json({
             result : false,
-            error : 'Missing or empty fields.'
+            error : 'Error : Missing or empty fields !'
         })
     }
     else {
@@ -57,7 +57,7 @@ router.post('/signup', (req, res)=>{
             })}
             else {res.json({
                 result : false,
-                error : 'User or password incorrect'
+                error : 'Error : Username or password incorrect !'
             })}
         })
     }
